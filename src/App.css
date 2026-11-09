@@ -1,0 +1,272 @@
+/* --- APKA PURANA BACKGROUND & MOVING PARTICLES (EXACT SAME) --- */
+body {
+  margin: 0;
+  background-color: #030712;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  color: #f3f4f6;
+}
+
+/* Background ke pechhe chote moving glowing dots (Particles) */
+body::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #00f2fe, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #38bdf8, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #818cf8, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 200px 250px, #00f2fe, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 300px 180px, #38bdf8, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 350px 350px;
+  opacity: 0.6;
+  z-index: -2;
+  animation: moveParticles 25s linear infinite;
+}
+
+/* Chote floating glowing orbs */
+body::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(124, 58, 237, 0.2));
+  border-radius: 50%;
+  filter: blur(80px);
+  top: 10%;
+  left: 15%;
+  z-index: -1;
+  pointer-events: none;
+  animation: floatSmallOrb 12s infinite alternate ease-in-out;
+}
+
+@keyframes moveParticles {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-350px); }
+}
+
+@keyframes floatSmallOrb {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.1); }
+  100% { transform: translate(-50px, 50px) scale(0.95); }
+}
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+
+/* --- NEW: HERO SECTION STYLING (FOR FETCH COMPONENT) --- */
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 10;
+}
+
+.hero-content {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 28px;
+  padding: 50px 40px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 
+              0 0 30px rgba(0, 242, 254, 0.1);
+  box-sizing: border-box;
+  animation: heroFadeIn 0.5s ease-out forwards;
+}
+
+.hero-content h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin-top: 0;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 15px rgba(0, 242, 254, 0.2);
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* --- MODIFIED .BTN1 FOR HERO CARD --- */
+.btn1 {
+  display: inline-block;
+  width: 100%;
+  max-width: 320px;
+  height: 60px;
+  background: linear-gradient(135deg, #00f2fe 0%, #0072ff 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 242, 254, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 25px;
+}
+
+.btn1:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+  box-shadow: 0 18px 40px rgba(0, 242, 254, 0.5),
+              0 0 20px rgba(56, 189, 248, 0.3);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn1:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn1:focus-visible {
+  outline: 3px solid #00f2fe;
+  outline-offset: 4px;
+}
+
+.hero-content span {
+  display: block;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --- APKA PURANA CARD & FOOTER CODE (BILKUL WESA HI) --- */
+.main-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+  backdrop-filter: blur(10px);
+  color: #94a3b8;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  z-index: 30;
+}
+
+.card1 {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 242, 254, 0.1);
+  width: 100%;
+  max-width: 460px;
+  padding: 35px 30px;
+  text-align: center;
+  box-sizing: border-box;
+  animation: fadeIn 0.4s ease-out;
+  position: relative;
+  z-index: 30;
+}
+
+.card1 h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 242, 254, 0.3);
+}
+
+.card1 .image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 4px;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+  margin-bottom: 20px;
+}
+
+.card1 p {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  font-weight: 500;
+  text-align: left;
+  margin: 10px 0;
+  word-break: break-all;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.card1 p:hover {
+  background: rgba(51, 65, 85, 0.95);
+  border-color: #38bdf8;
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.card1 p:nth-of-type(1) { border-left: 4px solid #00f2fe; }
+.card1 p:nth-of-type(2) { border-left: 4px solid #38bdf8; }
+.card1 p:nth-of-type(3) { border-left: 4px solid #60a5fa; font-size: 0.8rem; }
+.card1 p:nth-of-type(4) { border-left: 4px solid #818cf8; font-size: 0.8rem; }
+.card1 p:nth-of-type(5) { border-left: 4px solid #a78bfa; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
